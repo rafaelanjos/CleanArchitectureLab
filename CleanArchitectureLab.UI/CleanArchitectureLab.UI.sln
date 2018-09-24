@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitectureLab.UI", "CleanArchitectureLab.UI\CleanArchitectureLab.UI.csproj", "{98FB45D2-E697-44A5-AD32-AD2E68752BE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchitectureLab.Core", "..\CleanArchitectureLab.Core\CleanArchitectureLab.Core.csproj", "{FCC4A922-5E7C-4D1B-8C0C-70A0BE4974AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98FB45D2-E697-44A5-AD32-AD2E68752BE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98FB45D2-E697-44A5-AD32-AD2E68752BE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98FB45D2-E697-44A5-AD32-AD2E68752BE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98FB45D2-E697-44A5-AD32-AD2E68752BE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCC4A922-5E7C-4D1B-8C0C-70A0BE4974AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCC4A922-5E7C-4D1B-8C0C-70A0BE4974AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCC4A922-5E7C-4D1B-8C0C-70A0BE4974AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCC4A922-5E7C-4D1B-8C0C-70A0BE4974AF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9E90F5EC-155C-4E92-AC6F-27ABB4C5E0FF}
+	EndGlobalSection
+EndGlobal
