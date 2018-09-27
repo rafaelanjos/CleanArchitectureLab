@@ -1,12 +1,14 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using CleanArchitectureLab.Core.Application.Tarefas.Concluir;
+using CleanArchitectureLab.Core.Application.Tarefas.Criar;
+using CleanArchitectureLab.Core.Application.Usuarios.Criar;
+using CleanArchitectureLab.Core.Application.Usuarios.Listar;
+using CleanArchitectureLab.Core.Domain.Tarefas;
+using CleanArchitectureLab.Core.Persistance;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -19,7 +21,7 @@ namespace CleanArchitectureLab.UI
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public static IConfiguration Configuration { get; private set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -33,6 +35,14 @@ namespace CleanArchitectureLab.UI
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            var connectionString = Startup.Configuration["connectionStrings:tarefasDBConnectionString"];
+            services.AddDbContext<TarefasContext>(o => o.UseSqlServer(connectionString));
+
+            services.AddScoped<ICriarUsuarioCommand, CriarUsuarioCommand>();
+            services.AddScoped<IListarUsuariosQuery, ListarUsuariosQuery>();
+            services.AddScoped<IConcluirTarefaCommand, ConcluirTarefaCommand>();
+            services.AddScoped<ICriarTarefaCommand, CriarTarefaCommand>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,11 +58,18 @@ namespace CleanArchitectureLab.UI
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+
+
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseCookiePolicy();
+            //app.UseCookiePolicy();
 
             app.UseMvc();
+
+            AutoMapper.Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<UsuarioDto, Usuario>();
+            });
         }
     }
 }

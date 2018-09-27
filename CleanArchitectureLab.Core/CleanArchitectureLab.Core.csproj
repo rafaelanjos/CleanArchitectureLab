@@ -4,4 +4,28 @@
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Application\Tarefas\Commands\**" />
+    <Compile Remove="Application\Tarefas\Queries\**" />
+    <EmbeddedResource Remove="Application\Tarefas\Commands\**" />
+    <EmbeddedResource Remove="Application\Tarefas\Queries\**" />
+    <None Remove="Application\Tarefas\Commands\**" />
+    <None Remove="Application\Tarefas\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="7.0.1" />
+    <PackageReference Include="FluentValidation" Version="8.0.100" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.EntityFrameworkCore">
+      <HintPath>..\..\..\..\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.entityframeworkcore\2.1.1\lib\netstandard2.0\Microsoft.EntityFrameworkCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
