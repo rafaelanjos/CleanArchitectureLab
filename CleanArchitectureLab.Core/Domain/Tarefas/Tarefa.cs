@@ -13,12 +13,12 @@ namespace CleanArchitectureLab.Core.Domain.Tarefas
         public int ResponsavelId { get; set; }
         public IEnumerable<Usuario> Compartilhamentos { get; set; }
         public DateTime Criacao { get; set; }
-        public DateTime? Lembrate { get; set; }
+        public DateTime? Lembrete { get; set; }
 
         public Tarefa()
         {
             Criacao = DateTime.Now;
-            Lembrate = null;
+            Lembrete = null;
             Concluida = false;
         }
 
@@ -27,11 +27,11 @@ namespace CleanArchitectureLab.Core.Domain.Tarefas
             Concluida = !Concluida;
         }
 
-        public void AdicionarLembrete(DateTime lembrate)
+        public void AdicionarLembrete(DateTime lembrete)
         {
             //TODO erro de negocio no else
-            if (lembrate >= DateTime.Now)
-                Lembrate = lembrate;
+            if (lembrete >= DateTime.Now)
+                Lembrete = lembrete;
         }
 
         public void  Compartilhar(List<Usuario> usuarios)
