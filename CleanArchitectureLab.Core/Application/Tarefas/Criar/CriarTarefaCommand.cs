@@ -16,7 +16,7 @@ namespace CleanArchitectureLab.Core.Application.Tarefas.Criar
             _context = context;
         }
 
-        public void Execute(TarefaDto tarefaDto)
+        public void Execute(CriarTarefaDto tarefaDto)
         {
             var tarefa = Mapper.Map<Tarefa>(tarefaDto);
             _context.Tarefas.Add(tarefa);

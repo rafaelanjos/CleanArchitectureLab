@@ -6,6 +6,6 @@ namespace CleanArchitectureLab.Core.Application.Tarefas.Concluir
 {
     public interface IConcluirTarefaCommand
     {
-        void Execute(TarefaConcluidaDto dto);
+        void Execute(ConcluirTarefaDto dto);
     }
 }

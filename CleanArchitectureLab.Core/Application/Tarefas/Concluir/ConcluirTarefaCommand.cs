@@ -15,7 +15,7 @@ namespace CleanArchitectureLab.Core.Application.Tarefas.Concluir
             _context = context;
         }
 
-        public void Execute(TarefaConcluidaDto dto)
+        public void Execute(ConcluirTarefaDto dto)
         {
             var tarefa = _context.Tarefas.Where(x => x.Id == dto.Id).FirstOrDefault();
             tarefa.AlterarEstadoConclusao();

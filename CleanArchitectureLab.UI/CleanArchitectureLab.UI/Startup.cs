@@ -1,5 +1,6 @@
 using CleanArchitectureLab.Core.Application.Tarefas.Concluir;
 using CleanArchitectureLab.Core.Application.Tarefas.Criar;
+using CleanArchitectureLab.Core.Application.Tarefas.Listar;
 using CleanArchitectureLab.Core.Application.Usuarios.Criar;
 using CleanArchitectureLab.Core.Application.Usuarios.Listar;
 using CleanArchitectureLab.Core.Domain.Tarefas;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace CleanArchitectureLab.UI
 {
@@ -43,6 +45,7 @@ namespace CleanArchitectureLab.UI
             services.AddScoped<IListarUsuariosQuery, ListarUsuariosQuery>();
             services.AddScoped<IConcluirTarefaCommand, ConcluirTarefaCommand>();
             services.AddScoped<ICriarTarefaCommand, CriarTarefaCommand>();
+            services.AddScoped<IListarTarefaCommand, ListarTarefaCommand>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -69,6 +72,8 @@ namespace CleanArchitectureLab.UI
             AutoMapper.Mapper.Initialize(cfg =>
             {
                 cfg.CreateMap<UsuarioDto, Usuario>();
+                cfg.CreateMap<IEnumerable<ListaTarefasDto>, List<Tarefa>>();
+                cfg.CreateMap<CriarTarefaDto, Tarefa>();
             });
         }
     }
