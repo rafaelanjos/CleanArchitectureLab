@@ -1,5 +1,6 @@
 using CleanArchitectureLab.Core.Application.Tarefas.Concluir;
 using CleanArchitectureLab.Core.Application.Tarefas.Criar;
+using CleanArchitectureLab.Core.Application.Tarefas.Lembrete;
 using CleanArchitectureLab.Core.Application.Tarefas.Listar;
 using CleanArchitectureLab.Core.Application.Usuarios.Criar;
 using CleanArchitectureLab.Core.Application.Usuarios.Listar;
@@ -46,6 +47,8 @@ namespace CleanArchitectureLab.UI
             services.AddScoped<IConcluirTarefaCommand, ConcluirTarefaCommand>();
             services.AddScoped<ICriarTarefaCommand, CriarTarefaCommand>();
             services.AddScoped<IListarTarefaCommand, ListarTarefaCommand>();
+            services.AddScoped<IAdicionarLembreteCommand, AdicionarLembreteCommand>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

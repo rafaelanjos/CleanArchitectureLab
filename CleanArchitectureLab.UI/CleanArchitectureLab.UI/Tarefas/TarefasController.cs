@@ -1,5 +1,6 @@
 ﻿using CleanArchitectureLab.Core.Application.Tarefas.Concluir;
 using CleanArchitectureLab.Core.Application.Tarefas.Criar;
+using CleanArchitectureLab.Core.Application.Tarefas.Lembrete;
 using CleanArchitectureLab.Core.Application.Tarefas.Listar;
 using CleanArchitectureLab.UI.Common;
 using Microsoft.AspNetCore.Mvc;
@@ -14,12 +15,14 @@ namespace CleanArchitectureLab.UI.Tarefas
         private readonly IListarTarefaCommand _listarTarefaCommand;
         private readonly IConcluirTarefaCommand _concluirTarefaCommand;
         private readonly ICriarTarefaCommand _criarTarefaCommand;
+        private readonly IAdicionarLembreteCommand _adicionarLembreteCommand;
 
-        public TarefasController(IListarTarefaCommand listarTarefaCommand, IConcluirTarefaCommand concluirTarefaCommand, ICriarTarefaCommand criarTarefaCommand)
+        public TarefasController(IListarTarefaCommand listarTarefaCommand, IConcluirTarefaCommand concluirTarefaCommand, ICriarTarefaCommand criarTarefaCommand, IAdicionarLembreteCommand adicionarLembreteCommand)
         {
             _listarTarefaCommand = listarTarefaCommand;
             _concluirTarefaCommand = concluirTarefaCommand;
             _criarTarefaCommand = criarTarefaCommand;
+            _adicionarLembreteCommand = adicionarLembreteCommand;
         }
 
         [Route("{responsavelId}")]
@@ -64,6 +67,26 @@ namespace CleanArchitectureLab.UI.Tarefas
             {
                 // Validar
                 _concluirTarefaCommand.Execute(dto);
+
+                return StatusCode(201, Mensagens.CadastroSucesso);
+            }
+            catch (Exception ex)
+            {
+                //logar
+                return StatusCode(500, Mensagens.ErroGeral);
+            }
+        }
+
+
+
+        [Route("Lembrete")]
+        [HttpPost]
+        public IActionResult AdicionarLembrete(AdiconarLembreteDto dto)
+        {
+            try
+            {
+                // Validar
+                _adicionarLembreteCommand.Execute(dto);
 
                 return StatusCode(201, Mensagens.CadastroSucesso);
             }
