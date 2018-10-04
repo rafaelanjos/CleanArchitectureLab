@@ -77,8 +77,6 @@ namespace CleanArchitectureLab.UI.Tarefas
             }
         }
 
-
-
         [Route("Lembrete")]
         [HttpPost]
         public IActionResult AdicionarLembrete(AdiconarLembreteDto dto)
