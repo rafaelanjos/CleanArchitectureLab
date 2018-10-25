@@ -1,11 +1,11 @@
 FROM microsoft/dotnet:2.1-aspnetcore-runtime AS base
 WORKDIR /app
-EXPOSE 57076
-EXPOSE 44388
+#EXPOSE 57076 44388
 
 FROM microsoft/dotnet:2.1-sdk AS build
 WORKDIR /src
-COPY ["CleanArchitectureLab.UI/CleanArchitectureLab.UI.csproj", "CleanArchitectureLab.UI/"]
+COPY ["/CleanArchitectureLab.UI/CleanArchitectureLab.UI.csproj", "CleanArchitectureLab.UI/"]
+COPY ["/CleanArchitectureLab.Core/CleanArchitectureLab.Core.csproj", "CleanArchitectureLab.Core/"]
 RUN dotnet restore "CleanArchitectureLab.UI/CleanArchitectureLab.UI.csproj"
 COPY . .
 WORKDIR "/src/CleanArchitectureLab.UI"
